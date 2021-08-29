@@ -32,7 +32,8 @@ class File {
 }
 
 async function main() {
-    let json: string = await new File(path.resolve( process.cwd(), "apikey.json" )).read();
+    let _path = path.resolve( "../../etc/interface/apikey.json" );
+    let json: string = await new File( _path ).read();
     let apiKey: string = JSON.parse( json )?.key;
     await test(polygonio.tests( apiKey ));
 }
